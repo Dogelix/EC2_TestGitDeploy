@@ -12,7 +12,6 @@ body, html {
 }
 
 .bgimg {
-  background-image: url('https://cdn.discordapp.com/attachments/668906977765883960/677931048855928832/image0.jpg');
   height: 100%;
   background-position: center;
   background-size: cover;
@@ -79,12 +78,12 @@ hr {
 </style>
 <body>
 
-<div class="bgimg">
+<div id="bgimg" class="bgimg" style="background-image: url('https://cdn.discordapp.com/attachments/668906977765883960/677931048855928832/image0.jpg');">
   <div class="topleft">
     <img src="https://cdn.discordapp.com/attachments/668906977765883960/679704562092867608/Logo_w_DwG.png" width="150px" height="100px"/>
   </div>
   <div class="middle">
-    <h1>COMING SOON</h1>
+    <h1>COUNTDOWN TO DERBY UNI GAME EXPO</h1>
     <hr>
     <p id="demo" style="font-size:30px"></p>
   </div>
@@ -97,8 +96,30 @@ hr {
 
 
 
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 
 <script>
+  var imgs = [
+    'https://cdn.discordapp.com/attachments/668906977765883960/677931048855928832/image0.jpg',
+    'https://cdn.discordapp.com/attachments/668906977765883960/682199528870641664/image0.jpg'
+  ];
+
+  var count = 0;
+
+  var slideShow = setInterval(function(){
+    $('#bgimg').css('background-image', 'url(' + imgs[count] + ')');
+
+    count++;
+
+    if(count === imgs.length){
+      count = 0;
+    }
+
+  }, 5000);
+
 // Set the date we're counting down to
 var countDownDate = new Date("May 20, 2020 09:00:00").getTime();
 
@@ -120,7 +141,7 @@ var countdownfunction = setInterval(function() {
   // Output the result in an element with id="demo"
   document.getElementById("demo").innerHTML = days + "d " + hours + "h "
   + minutes + "m " + seconds + "s ";
-  
+
   // If the count down is over, write some text 
   if (distance < 0) {
     clearInterval(countdownfunction);
